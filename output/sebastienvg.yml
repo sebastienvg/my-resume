@@ -1,0 +1,137 @@
+name: 'Sebastien Vayrette-Gavard'
+info:
+  label: DevOps
+  brief: 'Sebastien hails from Annecy FRANCE. He has earned degrees from the University of Annecy. While his work focuses on Infrastructure as Code, mostly optimizing processes of both the deployment and the delivery, his non-work interests range widely, everything from flying robots to chaos theory. He could tell you about it, but THAT would NOT be a “length-limited” conversation!'
+contact:
+  email: vayrette@gmail.com
+  phone: '905 808 6907'
+meta:
+  version: v1.0.0
+  format: FRESH@^1.0.0-beta
+  modified: '2018-03-24T19:27:14.597Z'
+  url: 'https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json'
+location:
+  city: Oakville
+  region: Ontario
+  country: CA
+  code: 'L6M 5b1'
+  address: '2067 Redstone Cres'
+employment:
+  history:
+    -
+      position: 'Senior Systems Engineer / DevOps'
+      summary: 'EagleEye is a SaaS platform that allows retailers and other businesses to create an intelligent, real-time connection with their customers. The latest addition to our portfolio is the PCOptimum loyalty program which effectively merged both Optimum and PCplus. As a Senior Systems Engineer, my duties started with infrastructure as code using Chef, for monitoring and provisioning of the many different systems that compose our platform. I led and documented the deployment of our private cloud stack federated across three locations using highly redundant design. I help to bring us closer to continuous integration by talking with Dev Teams to understand their needs and closely working with the Architects to come up with practical and functional DevOps'' workflows using existing internal tools and DevOps tools. I am involved in load and stress testing or to troubleshoot performance issues at network, operating system or application level. The daily stuff includes monitorings systems, dealing with incoming support requests, lead and/or participate support bridges and PT sessions. I also maintain our internal systems from firewall appliances, load balancers, and storage to 3rd party services integrations. One of the biggest contribution this far was the introduction of Jenkins and Ansible along with Consul and Vault. This allows EagleEye to deploy, scale and secure any on-premise or cloud data center with very little operational overhead.'
+      start: '2017-01-09'
+      end: '2018-03-07'
+      keywords: []
+      highlights:
+        - 'Streamlined deployments and platform bootstrap by introducing Ansible and Jenkins.'
+        - 'Designed private cloud stack on premise for QA and Dev.'
+        - 'Automated disaster recovery process.'
+    -
+      position: 'Web Infrastructure Architect / DevOps'
+      summary: 'Infrastructure architect working closely with the development teams to implement DevOps culture and methods using multiple tools (e.g.: Ansible, Vagrant, Jenkins, Zabbix etc.) to acheive Infrastructure as Code and improve the development workflow.'
+      start: '2016-01-07'
+      end: '2017-01-07'
+      keywords: []
+      highlights:
+        - 'Streamlined workflows by implementing automation (Ansible, Gitlab, Jenkins).'
+        - 'Designed hardware private cloud stack to deploy OpenStack in colocation.'
+        - 'Planed Data Centre migration from in house baremetal farm to private Openstack Cloud.'
+        - 'Simplified devel by introducing a mix of Vagrant environment and Ansible playbooks.'
+    -
+      position: 'Senior System Admin'
+      summary: 'Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Score    s™ that are not merely competitive, but approach the theoretical limit of lossless compression.'
+      start: '2009-08-01'
+      end: '2015-11-01'
+      keywords: []
+      highlights:
+        - 'Managed, deployed, maintained and tuned CentOS and CloudLinux servers running cPanel for shared hosting business.'
+        - 'Managed, deployed, maintained and tuned CentOS/Debian servers for various business needs (Apache/MySQL/Postfix/Samba).'
+        - 'Resolved run-time problems with web applications (PHP/Perl/Apache/Tomcat). Investigated hacking/spamming incidents. Troubleshot full spectrum of problems related all parts of LAMP platform: Apache, Nginx, PHP, MySQL, Exim MTA and Dovecot and mail server.'
+        - 'Troubleshot and repaired hardware. Rebuilt servers from failing drives. Troubleshot network related problems.'
+        - 'Trained junior system administrators. Wrote infrastructure documentation/server installation manuals and maintained internal knowledgebase.'
+        - 'Wrote SQL scripts to generate usage and accounting reports. Wrote bash scripts to automate common tasks. Wrote reports for senior staff.'
+education:
+  level: ""
+  history:
+    -
+      institution: 'University of Annecy-le-Vieux'
+      start: '1999-09-01'
+      end: 201-09-01
+      grade: '4.0'
+      curriculum:
+        - 'DPCT - Network Admin'
+      summary: ""
+      area: 'Information Technology'
+      studyType: Bachelor
+service:
+  history:
+    -
+      type: volunteer
+      position: Chairman
+      organization: Wifi-Savoie
+      start: '2004-09-01'
+      end: '2006-09-01'
+      summary: 'Wireless WAN Operated by and for the Citizen of Savoie county'
+      highlights:
+        - 'Deployed wireless network around Mt Blanc to cover the UTMB 2006 edition. The network was used for Internet access VoIP as well as transmission of geo data.'
+skills:
+  sets:
+    -
+      name: 'Infrastructure as Code'
+      level: Master
+      skills:
+        - Ansible
+        - Consul
+        - Chef
+        - Terraform
+        - OpenStack
+    -
+      name: Cloud
+      level: Master
+      skills:
+        - OpenNebula
+        - RackSpace
+        - GoogleCompute
+        - AWS
+        - VMware
+    -
+      name: 'System Admin'
+      level: Master
+      skills:
+        - 'Data Centre'
+        - Linux
+        - 'VM & Containers'
+        - Network
+        - OpenStack
+    -
+      name: Dev
+      level: Familiar
+      skills:
+        - PHP
+        - Python
+        - NodeJS
+        - Bash
+        - Perl
+        - git
+interests:
+  -
+    name: 'Internet Of Things'
+    keywords:
+      - 'Flying Robots'
+      - 'Home Automation'
+      - 'Electronic Prototype'
+testimonials:
+  -
+    name: 'Paul Filice'
+    flavor: professional
+    quote: 'It is my pleasure to recommend Sebastien, his performance working as a Senior System Admin for HostPapa proved that he will be a valuable addition to any company.'
+    private: false
+languages:
+  -
+    language: French
+    fluency: 'Native Speaker'
+  -
+    language: English
+    fluency: Fluent

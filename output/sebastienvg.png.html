@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Sebastien Vayrette-Gavard</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic'
+        rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <style>
+            * {
+              box-sizing: border-box;
+            }
+            
+            main {
+              display: block;
+            }
+            
+            body {
+              font-size: 15px;
+              color: #333;
+              line-height: 1.42857143;
+              background-color: #F0F0F0;
+              margin: 0;
+              padding: 0;
+              font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Calibri', 'sans-serif';
+            }
+            
+            /* Typical page borders are awkward when rendered to PDF. */
+            body.pdf {
+              background-color: #FFFFFF;
+            }
+            
+            /* Adobe or wkhtmltopdf has issues with the <main> tag, so we use <div> for
+            the PDF case, <main> for the HTML case, and style both via an ID. */
+            #main {
+              background-color: #FFF;
+              margin: 10px;
+              padding: 10px;
+              border: 1px solid #E6E6E6;
+            }
+            
+            body.pdf > #main {
+              border: none;
+            }
+            
+            #container > header {
+              padding-top: 6em;
+              padding-bottom: 1em;
+            }
+            
+            body.pdf #container > header {
+              padding: 0;
+            }
+            
+            #main > #container > section {
+              margin-left: 150px;
+              position: relative;
+              display: block;
+            }
+            
+            section > div {
+              margin-bottom: 60px;
+            }
+            
+            span.fa
+            {
+              font-size: 56px;
+              position: absolute;
+              top: 37px;
+              transform: translateY(-50%);
+              left: -100px;
+              color: #1a4367;
+            }
+            
+            hr {
+              margin-top: 20px;
+              margin-bottom: 20px;
+              border: 0;
+              border-top: 1px solid #EEE;
+            }
+            
+            .tenure, .keywords {
+              font-size: 75%;
+            }
+            
+            h1 {
+              margin: 0;
+              font-size: 46px;
+              display: inline-block;
+            }
+            
+            h2 {
+              font-size: 30px;
+              color: #4376a2;
+              text-transform: uppercase;
+              font-weight: normal;
+              padding-top: 20px;
+              margin-bottom: 60px;
+            }
+            
+            h3 {
+              margin-bottom: 0;
+              font-size: 18px;
+            }
+            
+            a, a:visited {
+              color: #428BCA;
+              text-decoration: none;
+              font-weight: bold;
+            }
+            
+            a:hover {
+              text-decoration: underline;
+            }
+            
+            .defunct {
+              color: #989898;
+              font-weight: bold;
+            }
+            
+            #summary {
+              font-size: 150%;
+              margin-left: 0;
+              padding: 20px 0;
+            }
+            
+            #summary > p > strong {
+              font-size: 1.25em;
+            }
+            
+            #contact {
+              float: right;
+            }
+            
+            #summary > header > .fa-info {
+              font-size: 70px;
+              letter-spacing: 5px;
+              text-transform: uppercase;
+              font-weight: normal;
+              top: 50%;
+              left: -85px;
+              transform: translateY(-50%);
+            }
+            
+            #summary h2 {
+              display: none;
+            }
+            
+            
+            .label-keyword {
+              display: inline-block;
+              background: #e8f4ff;
+              color: black;
+              font-size: 0.9em;
+              padding: 5px;
+              border: 1px solid #357ebd;
+              border-radius: 5px;
+              margin-top: 2px;
+              font-weight: bold;
+              text-align: center;
+            }
+            
+            .notes {
+              font-size: 10px;
+              display: block;
+              font-weight: normal;
+              text-transform: uppercase;
+            }
+            
+            .card-skills {
+                position: relative;
+            }
+            .card-nested {
+                min-height: 0;
+                margin-bottom: 10px;
+                border-width: 1px 0 0 0;
+            }
+            .card {
+                background: #FFF;
+                border-radius: 3px;
+                padding: 10px;
+            }
+            
+            .skill-level {
+              border-radius: 3px;
+              position: absolute;
+              top: 10px;
+              bottom: 10px;
+              left: 0;
+              width: 10px;
+              box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+            }
+            .skill-level .skill-progress {
+              position: absolute;
+              border-radius: 3px;
+              bottom: 0;
+              width: 100%;
+              -webkit-transition: height 1s ease;
+            }
+            .skill-level .skill-progress.beginner {
+              height: 50%;
+              background: #e74c3c;
+            }
+            .skill-level .skill-progress.intermediate {
+              height: 70%;
+              background: #f1c40f;
+            }
+            .skill-level .skill-progress.advanced {
+              height: 80%;
+              background: #428bca;
+            }
+            .skill-level .skill-progress.master {
+              height: 95%;
+              background: #5cb85c;
+            }
+            .skill-info {
+              margin-left: 10px;
+            }
+            @media (max-width: 480px) {
+              .skill-info {
+                margin-left: 20px;
+              }
+            }
+            .skill-info > strong {
+              font-weight: 400;
+              font-size: 24px;
+              color: #1d1d1d;
+              line-height: 24px;
+            }
+            
+            .list-unstyled {
+              padding-left: 0;
+              list-style: none;
+            }
+            
+            .card-skills {
+              position: relative;
+            }
+            
+            .space-top {
+                margin-top: 5px;
+            }
+            
+            #container {
+              max-width: 800px;
+              margin: 0 auto;
+            }
+            
+            #elevator-pitch {
+              text-align: center;
+              font-size: 24px;
+              color: #BFC1C3;
+              text-transform: uppercase;
+              font-weight: normal;
+            }
+            
+            .res-label {
+              font-style: italic;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <main id="main">
+            <div id="container">
+                <header>
+                     <h1>Sebastien Vayrette-Gavard</h1>
+                    <div id="contact">
+                        <div class="email"><a href="mailto:vayrette@gmail.com">vayrette@gmail.com</a>
+                        </div>
+                        <div class="phone">905 808 6907</div>
+                    </div>
+                </header>
+                <hr>
+                <section id="summary">
+                    <header> <span class="fa fa-lg fa-info"></span> 
+                         <h2>info</h2>
+
+                    </header>Sebastien hails from Annecy FRANCE. He has earned degrees from the University
+                    of Annecy. While his work focuses on Infrastructure as Code, mostly optimizing
+                    processes of both the deployment and the delivery, his non-work interests
+                    range widely, everything from flying robots to chaos theory. He could tell
+                    you about it, but THAT would NOT be a “length-limited” conversation!</section>
+                <hr>
+                <section id="skills">
+                    <header>
+                         <h2>Skills</h2>
+                    </header> <span class="fa fa-lg fa-code"></span>
+                    <ul class="list-unstyled">
+                        <li class="card card-nested card-skills">
+                            <div class="skill-level" rel="tooltip" title="Master" data-placement="left">
+                                <div class="skill-progress master"></div>
+                            </div>
+                            <div class="skill-info"> <strong>Infrastructure as Code</strong>
+                                <div class="space-top labels">
+                                    <div class="label label-keyword"> <span class="kw">Ansible</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Consul</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Chef</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Terraform</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">OpenStack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card card-nested card-skills">
+                            <div class="skill-level" rel="tooltip" title="Master" data-placement="left">
+                                <div class="skill-progress master"></div>
+                            </div>
+                            <div class="skill-info"> <strong>Cloud</strong>
+                                <div class="space-top labels">
+                                    <div class="label label-keyword"> <span class="kw">OpenNebula</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">RackSpace</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">GoogleCompute</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">AWS</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">VMware</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card card-nested card-skills">
+                            <div class="skill-level" rel="tooltip" title="Master" data-placement="left">
+                                <div class="skill-progress master"></div>
+                            </div>
+                            <div class="skill-info"> <strong>System Admin</strong>
+                                <div class="space-top labels">
+                                    <div class="label label-keyword"> <span class="kw">Data Centre</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Linux</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">VM &amp; Containers</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Network</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">OpenStack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="card card-nested card-skills">
+                            <div class="skill-level" rel="tooltip" title="Familiar" data-placement="left">
+                                <div class="skill-progress familiar"></div>
+                            </div>
+                            <div class="skill-info"> <strong>Dev</strong>
+                                <div class="space-top labels">
+                                    <div class="label label-keyword"> <span class="kw">PHP</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Python</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">NodeJS</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Bash</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">Perl</span>
+                                    </div>
+                                    <div class="label label-keyword"> <span class="kw">git</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <hr>
+                <section id="employment">
+                    <header> <span class="fa fa-lg fa-building"></span> 
+                         <h2>employment</h2>
+
+                    </header>
+                    <div>
+                         <h3><em>Senior Systems Engineer / DevOps</em>,
+
+    
+
+    </h3> <span class="tenure">2017-01 — 2018-03</span>
+                        <p>
+                            <p>EagleEye is a SaaS platform that allows retailers and other businesses
+                                to create an intelligent, real-time connection with their customers. The
+                                latest addition to our portfolio is the PCOptimum loyalty program which
+                                effectively merged both Optimum and PCplus. As a Senior Systems Engineer,
+                                my duties started with infrastructure as code using Chef, for monitoring
+                                and provisioning of the many different systems that compose our platform.
+                                I led and documented the deployment of our private cloud stack federated
+                                across three locations using highly redundant design. I help to bring us
+                                closer to continuous integration by talking with Dev Teams to understand
+                                their needs and closely working with the Architects to come up with practical
+                                and functional DevOps&#39; workflows using existing internal tools and
+                                DevOps tools. I am involved in load and stress testing or to troubleshoot
+                                performance issues at network, operating system or application level. The
+                                daily stuff includes monitorings systems, dealing with incoming support
+                                requests, lead and/or participate support bridges and PT sessions. I also
+                                maintain our internal systems from firewall appliances, load balancers,
+                                and storage to 3rd party services integrations. One of the biggest contribution
+                                this far was the introduction of Jenkins and Ansible along with Consul
+                                and Vault. This allows EagleEye to deploy, scale and secure any on-premise
+                                or cloud data center with very little operational overhead.</p>
+                        </p>
+                        <ul>
+                            <li>Streamlined deployments and platform bootstrap by introducing Ansible
+                                and Jenkins.</li>
+                            <li>Designed private cloud stack on premise for QA and Dev.</li>
+                            <li>Automated disaster recovery process.</li>
+                        </ul>
+                    </div>
+                    <div>
+                         <h3><em>Web Infrastructure Architect / DevOps</em>,
+
+    
+
+    </h3> <span class="tenure">2016-01 — 2017-01</span>
+                        <p>
+                            <p>Infrastructure architect working closely with the development teams to
+                                implement DevOps culture and methods using multiple tools (e.g.: Ansible,
+                                Vagrant, Jenkins, Zabbix etc.) to acheive Infrastructure as Code and improve
+                                the development workflow.</p>
+                        </p>
+                        <ul>
+                            <li>Streamlined workflows by implementing automation (Ansible, Gitlab, Jenkins).</li>
+                            <li>Designed hardware private cloud stack to deploy OpenStack in colocation.</li>
+                            <li>Planed Data Centre migration from in house baremetal farm to private Openstack
+                                Cloud.</li>
+                            <li>Simplified devel by introducing a mix of Vagrant environment and Ansible
+                                playbooks.</li>
+                        </ul>
+                    </div>
+                    <div>
+                         <h3><em>Senior System Admin</em>,
+
+    
+
+    </h3> <span class="tenure">2009-08 — 2015-11</span>
+                        <p>
+                            <p>Pied Piper is a multi-platform technology based on a proprietary universal
+                                compression algorithm that has consistently fielded high Weisman Score
+                                s™ that are not merely competitive, but approach the theoretical limit
+                                of lossless compression.</p>
+                        </p>
+                        <ul>
+                            <li>Managed, deployed, maintained and tuned CentOS and CloudLinux servers
+                                running cPanel for shared hosting business.</li>
+                            <li>Managed, deployed, maintained and tuned CentOS/Debian servers for various
+                                business needs (Apache/MySQL/Postfix/Samba).</li>
+                            <li>Resolved run-time problems with web applications (PHP/Perl/Apache/Tomcat).
+                                Investigated hacking/spamming incidents. Troubleshot full spectrum of problems
+                                related all parts of LAMP platform: Apache, Nginx, PHP, MySQL, Exim MTA
+                                and Dovecot and mail server.</li>
+                            <li>Troubleshot and repaired hardware. Rebuilt servers from failing drives.
+                                Troubleshot network related problems.</li>
+                            <li>Trained junior system administrators. Wrote infrastructure documentation/server
+                                installation manuals and maintained internal knowledgebase.</li>
+                            <li>Wrote SQL scripts to generate usage and accounting reports. Wrote bash
+                                scripts to automate common tasks. Wrote reports for senior staff.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr>
+                <section id="education">
+                    <header> <span class="fa fa-lg fa-mortar-board"></span> 
+                         <h2>education</h2>
+
+                    </header>
+                    <div>
+                        
+<h3>
+
+University of Annecy-le-Vieux
+
+</h3>
+<span class="tenure">1999-09 — 0201-09</span>| <span class="keywords">DPCT - Network Admin </span>
+                    </div>
+                </section>
+                <hr>
+                <section id="service">
+                    <header> <span class="fa fa-lg fa-child"></span> 
+                         <h2>service</h2>
+
+                    </header>
+                    <div>
+                         <h3><em>Chairman</em>,
+      Wifi-Savoie
+    </h3>
+ <span class="tenure">2004-09 — 2006-09</span>
+
+                        <p>
+                            <p>Wireless WAN Operated by and for the Citizen of Savoie county</p>
+                        </p>
+                        <ul>
+                            <li>Deployed wireless network around Mt Blanc to cover the UTMB 2006 edition.
+                                The network was used for Internet access VoIP as well as transmission of
+                                geo data.</li>
+                        </ul>
+                    </div>
+                </section>
+                <hr>
+                <section id="testimonials">
+                    <header> <span class="fa fa-lg fa-quote-left"></span> 
+                         <h2>testimonials</h2>
+
+                    </header>
+                    <div>
+                         <h3><em>Paul Filice</em></h3>
+
+                        <p>It is my pleasure to recommend Sebastien, his performance working as a
+                            Senior System Admin for HostPapa proved that he will be a valuable addition
+                            to any company.</p>
+                    </div>
+                </section>
+                <hr>
+                <section id="interests">
+                    <header> <span class="fa fa-lg fa-bicycle"></span> 
+                         <h2>interests</h2>
+
+                    </header>
+                    <div>
+                         <h3><em>Internet Of Things</em></h3>
+ <span class="tenure">Current</span>
+
+                    </div>
+                </section>
+            </div>
+        </main>
+    </body>
+
+</html>
