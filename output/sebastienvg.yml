@@ -8,7 +8,7 @@ contact:
 meta:
   version: v1.0.0
   format: FRESH@^1.0.0-beta
-  modified: '2018-03-24T19:27:14.597Z'
+  modified: '2018-03-24T19:30:45.326Z'
   url: 'https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json'
 location:
   city: Oakville
@@ -58,7 +58,7 @@ education:
     -
       institution: 'University of Annecy-le-Vieux'
       start: '1999-09-01'
-      end: 201-09-01
+      end: '2001-09-01'
       grade: '4.0'
       curriculum:
         - 'DPCT - Network Admin'
